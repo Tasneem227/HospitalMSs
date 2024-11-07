@@ -1,0 +1,71 @@
+﻿@model MedicalRecordWithPatientIdList
+@{
+    ViewData["Title"] = "AddPatientMedicalRecord";
+}
+@if (!Model.patientlist.Any())
+{
+    <h1 class="display-4">You have no appointments yet </h1>
+}
+
+else
+{
+    var patients = Model.patientlist
+    .Select(p => new { p.Id, FullName = p.FName + " " + p.LName });
+    SelectList patientOptions = new SelectList(patients, "Id", "FullName");
+
+
+    <h1 style="color:black">Add Patient Medical Record</h1>
+
+    <form method="post" asp-action="AddPatientMedicalRecord" asp-controller="Doctor" asp-route-DoctorId="@Model.DoctorId" asp-route-PatientId="@Model.PatientId">
+
+        <div>
+
+            <input type="hidden" asp-for="@Model.DoctorId" />
+
+
+            <br>
+
+            <label asp-for="patientlist">Select Patient</label>
+
+            <select class="form-select mt-3" asp-for="PatientId" asp-items="patientOptions" required>
+                <option selected value="">Select patient</option>
+            </select>
+
+            <span asp-validation-for="PatientId" class="text-danger"></span>
+        </div>
+
+        <br>
+
+
+        <div>
+            <label asp-for="Date"> </label>
+            <input type="datetime" class="form form-control" asp-for="Date" />
+
+        </div>
+
+        <br>
+        <div>
+            <label asp-for="Note"> </label>
+            <input class="form form-control" asp-for="Note" />
+            <span asp-validation-for="Note" class="text-danger"></span>
+        </div>
+
+        <br>  <br>
+
+        <div class="form-button mt-3">
+            <a asp-action="AddPatientMedicalRecord" asp-controller="Doctor">
+                <button id="submit" class="btn btn-primary">
+                    Add Medical Record
+
+                </button>
+            </a>
+        </div>
+    </form>
+}
+<br />
+<br />
+<div class="form-group">
+    <a asp-action="Index" asp-controller="Home">
+        <button id="submit" class="btn btn-primary">Back</button>
+    </a>
+</div>

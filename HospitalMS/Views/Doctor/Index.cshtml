@@ -1,0 +1,40 @@
+﻿
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+   
+  <h3 style="color:black"> Welcome Doctors In Our Hospital</h3>
+
+<div class="form-button mt-3">
+    <a asp-action="AddMedicalRecord" asp-controller="Doctor">
+        <button id="submit" class="btn btn-primary">
+            Add Medical Record
+
+        </button>
+    </a>
+</div>
+
+
+<div class="form-button mt-3">
+    <a asp-action="DeleteMedicalRecord" asp-controller="Doctor" asp-route-id="">
+        <button id="submit" class="btn btn-primary">
+            Delete Medical Record
+
+        </button>
+    </a>
+</div>
+
+<div class="form-button mt-3">
+    <a asp-action="ViewAppointment" asp-controller="Doctor">
+        <button id="submit" class="btn btn-primary">
+            View Appointment
+
+        </button>
+    </a>
+</div>
+
+
+
+ 

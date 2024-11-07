@@ -1,0 +1,41 @@
+﻿@using HospitalMS.Models
+@model List<Doctor>
+
+@{
+    ViewData["Title"] = "ViewAllDeptDoctors";
+}
+
+<h1>View All Department Doctors</h1>
+
+<br />
+<br />
+
+<div style="text-align:center">
+    <table class="table table-responsive table-hover">
+        <thead class="table-light">
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Birth Date</th>
+                <th>Gender</th>
+                <th>UserName</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Doctor Appointments</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><img src="~/Images/Doctors/@item.Imag" style="width:100px; height:100px" /></td>
+                <td>@item.FName @item.LName</td>
+                <td>@item.BirthDate</td>
+                <td>@item.Gender</td>
+                <td>@item.Username</td>
+                <td>@item.Email</td>
+                <td>@item.Phone</td>
+                <td><a asp-action="ViewDoctorBookedAppointments" asp-controller="SuperAdmin" asp-route-DoctId="@item.Id" class="btn btn-success">Appointments</a></td>
+            </tr>
+        }
+    </table>
+</div>

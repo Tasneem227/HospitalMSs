@@ -1,0 +1,40 @@
+﻿@model List<MedicalRecordNurseViewModel>
+@{
+    ViewData["Title"] = "ViewPatientMedicalRecord";
+}
+
+<h1 style="color:black"> View Patient Medical Record </h1>
+
+<br />
+<br />
+
+<div style="text-align:center">
+    @if (!Model.Any())
+    {
+        <h1 class="display-4">He has no medical records yet </h1>
+    }
+    else
+    {
+        <table class="table table-responsive table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>Doctor Image</th>
+                    <th>Doctor Name</th>
+                    <th>Patient Name</th>
+                    <th>Date and Time</th>
+                    <th>Note</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><img src="~/Images/Doctors/@item.DoctorImage" style="width:100px; height:100px" /></td>
+                    <td>@item.DoctorFirstName @item.DoctorLastName</td>
+                    <td>@item.PatientFirstName @item.PatientLastName</td>
+                    <td>@item.Date </td>
+                    <td>@item.Note</td>
+                </tr>
+            }
+        </table>
+    }
+</div>

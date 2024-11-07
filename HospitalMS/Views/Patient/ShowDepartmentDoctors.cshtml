@@ -1,0 +1,26 @@
+﻿@model List<Doctor>
+@{
+    ViewData["Title"] = "ShowDepartmentDoctors";
+}
+
+<h1>Department Doctors</h1>
+
+<br />
+<br />
+
+@foreach(var item in Model)
+{
+    <img src="~/Images/Doctors/@item.Imag" style="width:200px; height:200px" />
+    <br />
+    <br />
+    <h4>Dr : <span style="color:orangered">@item.FName @item.LName</span> </h4>
+    <h4>Gender : <span style="color:orangered">@item.Gender</span> </h4>
+
+    <div style="text-align:center">
+        <a asp-action="BookAnAppoinment" asp-controller="Patient" asp-route-DocId="@item.Id" class="btn btn-success"><h6>Book an appoinment</h6></a>
+    </div>
+
+    <br />
+    <hr />
+    <br />
+}

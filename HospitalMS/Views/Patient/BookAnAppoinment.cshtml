@@ -1,0 +1,29 @@
+﻿@model DocDateTimeViewModel
+@{
+    ViewData["Title"] = "BookAnAppoinment";
+}
+
+<h1>Book An Appoinment</h1>
+
+<br />
+<br />
+
+<form asp-controller="Patient" asp-action="SaveAppointment">
+
+    <input type="hidden" name="DocId" value="@ViewBag.DocId" />
+
+    <label>Date - Time</label>
+    <br />
+    <select name="DateTimeAppointment" class="form form-control">
+        @foreach (var item in (List<Booking>)ViewBag.BookingLst)
+        {
+            DateTime DT = item.Date.ToDateTime(item.Time);
+            <option value="@DT">@item.Date - @item.Time</option>
+        }
+    </select>
+
+    <br />
+    <br />
+
+    <input type="submit" value="Save" class="btn btn-primary" />
+</form>

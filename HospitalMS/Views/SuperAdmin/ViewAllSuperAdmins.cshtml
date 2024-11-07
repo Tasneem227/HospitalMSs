@@ -1,0 +1,40 @@
+﻿@using HospitalMS.Models
+@model List<SuperAdmin>
+
+@{
+    ViewData["Title"] = "ViewAllAdmins";
+}
+
+<h1>View All Admins</h1>
+
+<br />
+<br />
+
+<div style="text-align:center">
+    <table class="table table-responsive table-hover">
+        <thead class="table-light">
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Birth Date</th>
+                <th>Gender</th>
+                <th>UserName</th>
+                <th>Email</th>
+                
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><img src="~/Images/Doctors/@item.Imag" style="width:auto; height:100px" /></td>
+                <td>@item.FName @item.LName</td>
+                <td>@item.Phone</td>
+                <td>@item.BirthDate</td>
+                <td>@item.Gender</td>
+                <td>@item.Username</td>
+                <td>@item.Email</td>
+                 </tr>
+        }
+    </table>
+</div>

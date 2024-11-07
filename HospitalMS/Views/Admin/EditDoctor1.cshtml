@@ -1,0 +1,56 @@
+﻿@model List<Doctor>
+@{
+    ViewData["Title"] = "EditDoctor";
+}
+
+
+
+<html style="height:-moz-fit-content; scroll-behavior:auto">
+
+<head style="height:-moz-fit-content; scroll-behavior:auto">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/StyleSheet.css">
+</head>
+<body style="height:-moz-fit-content; scroll-behavior:auto ">
+
+    <div class="form-body" style="height:-moz-fit-content; scroll-behavior:auto">
+        <div class="row">
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Edit Doctor </h3>
+                        <p>Select Doctor you want to Edit</p>
+                        <table class="table table-bordered table-hover" style=" Background:azure">
+                            <td>Id</td>
+                            <td>Full Name</td>
+                            <td>Username</td>
+                            <td>Edit </td>
+                            @foreach (var doctor in Model)
+                            {
+                                <tr>
+                                    <td>@doctor.Id</td>
+                                    <td>@doctor.FName @doctor.LName</td>
+                                    <td>@doctor.Username</td>
+                                    <td>
+                                        <form class="requires-validation" novalidate asp-action="EditDoctor" asp-controller="Admin" asp-route-id="@doctor.Id">
+                                            <div class="col-md-12">
+                                                <button type="submit" class="btn btn-info ">Edit</button>
+                                                <div class="valid-feedback">You selected a position!</div>
+                                                <div class="invalid-feedback">Please select a position!</div>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                        <a asp-action="AdminPage" asp-controller="Admin"> <button id="submit" class="btn btn-primary">Back </button></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/JavaScript.js"></script>
+</body>
+</html>

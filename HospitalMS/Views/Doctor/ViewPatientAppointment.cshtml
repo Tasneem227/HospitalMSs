@@ -1,0 +1,57 @@
+﻿@model List<Booking>
+@{
+    ViewData["Title"] = "ViewPatientAppointment";
+}
+
+<h1 style="color:black"> Doctor Appointment </h1>
+
+<br />
+<br />
+
+<div style="text-align:center">
+    @if (!Model.Any())
+    {
+        <h1 class="display-4">You have no appointments yet</h1>
+    }
+    else
+    {
+        <table class="table table-responsive table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    
+                        @if (item != null)
+                        {
+
+                        <td>
+                            @item.Patient.FName @item.Patient.LName
+                        </td>
+                        <td>@item.Date</td>
+                        <td>@item.Time</td>
+
+                        }
+                        else
+                        {
+                            <span> You Have No Appointments Yet </span>
+                        }
+                    
+                    
+                </tr>
+            }
+        </table>
+    }
+</div>
+<br />
+<br />
+<div class="form-group">
+    <a asp-action="Index" asp-controller="Home">
+        <button id="submit" class="btn btn-primary">Back</button>
+    </a>
+</div>

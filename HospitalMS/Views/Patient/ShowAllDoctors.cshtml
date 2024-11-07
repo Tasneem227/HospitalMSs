@@ -1,0 +1,58 @@
+﻿@model List<Doctor>
+
+@{
+    ViewData["Title"] = "ShowAllDoctors";
+}
+<div class="container my-5">
+    <h2 class="text-center mb-5 text-primary">Meet Our Expert Doctors</h2>
+    <hr />
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <!-- Card with Hover Effect -->
+                <div class="card shadow-lg border-light rounded h-100">
+                    <!-- Doctor Image -->
+                    <img src="~/Images/Doctors/@item.Imag" class="card-img-top" alt="Doctor Image" style="height: 250px; object-fit: cover; max-height: 250px; transition: transform 0.3s ease;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center text-primary">Dr. <span class="text-danger">@item.FName @item.LName</span></h5>
+                        <p class="text-center mb-2">
+                            <strong>Phone:</strong> <span class="text-muted">@item.Phone</span>
+                        </p>
+                        <p class="text-center mb-4">
+                            <strong>Department:</strong> <span class="text-muted">@item.Department.Name</span>
+                        </p>
+                        @if (User.IsInRole("Patient"))
+                        {
+                            <div class="d-flex justify-content-center">
+                                <a asp-action="BookAnAppoinment" asp-controller="Patient" asp-route-DocId="@item.Id" class="btn btn-success btn-block">
+                                    <i class="fas fa-calendar-plus"></i> Book Appointment
+                                </a>
+                            </div>
+                        }
+                    </div>
+                    <!-- Card Footer with View Profile Button -->
+                    <div class="card-footer text-center">
+                        <a asp-action="DoctorProfile" asp-controller="Doctor" asp-route-id="@item.Id" class="btn btn-outline-info btn-sm">
+                            <i class="fas fa-user"></i> View Profile
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    /* Hover Effect for the Card */
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Slight zoom effect on image hover */
+    .card-img-top:hover {
+        transform: scale(1.1);
+    }
+</style>

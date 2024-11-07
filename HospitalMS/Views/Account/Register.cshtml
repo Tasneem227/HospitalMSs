@@ -1,0 +1,97 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+<head style="height:-moz-fit-content; scroll-behavior:auto">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/StyleSheet.css">
+</head>
+<br />
+<body style="height:-moz-fit-content; scroll-behavior:auto ">
+
+<div class="form-body" style="height:-moz-fit-content; scroll-behavior:auto">
+    
+        <div class="form-content">
+            <div class="form-items">
+                    <h3>Register</h3>
+                    <hr /><br />
+                    <form asp-action="saveRegister" asp-controller="Account" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FName" class="control-label"></label>
+                <input asp-for="FName" class="form-control" />
+                <span asp-validation-for="FName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LName" class="control-label"></label>
+                <input asp-for="LName" class="form-control" />
+                <span asp-validation-for="LName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="@Model.UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password"  class="control-label"></label>
+                <input asp-for="Password" value="@Model.Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword"  class="control-label"></label>
+                <input asp-for="ConfirmPassword" value="@Model.Password" type="password" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+                        <div class="col-md-12">
+                            <label asp-for="Image">Upload Image</label>
+                            <br /> <br />
+                            <input class="form-control" type="file" asp-for="@Model.Image" required>
+                            <span asp-validation-for="Image" class="text-danger"></span>
+                            <br />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <br />
+                            <div class="form-check">
+                                <input class="form-check-input" value="Female" type="radio" id="f" checked asp-for="@Model.Gender">
+                                <label class="form-check-label" for="f">
+                                    Female
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" value="Male" id="m" type="radio" asp-for="@Model.Gender">
+                                <label class="form-check-label" for="m">
+                                    Male
+                                </label>
+                            </div>
+                        </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+<div>
+        <a asp-action="Index"><button class="btn btn-primary">Back to List</button></a>
+</div>
+</body>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

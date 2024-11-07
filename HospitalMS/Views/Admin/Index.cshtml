@@ -1,0 +1,78 @@
+﻿@model AdminNurseDoctorViewModel
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<html style="height:-moz-fit-content; scroll-behavior:auto">
+<head style="height:-moz-fit-content; scroll-behavior:auto">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/StyleSheet.css">
+    
+</head>
+<body style="height:-moz-fit-content; scroll-behavior:auto ">
+
+
+
+    <br />
+    <h3>Hello Admin!</h3>
+    <br />
+                        
+                            <!-- Add the button container here -->
+    <div class="row">
+        <div class="col-md-4">
+                            <div class="form-group">
+                            <a asp-action="AddDoctor" asp-controller="Admin">
+                                <button id="submit" class="btn btn-primary">Add Doctor</button>
+                            </a>
+                            </div>
+
+                            <div class="form-group">
+                            <a asp-action="DeleteDoctor" asp-controller="Admin">
+                                <button id="submit" class="btn btn-primary">Delete Doctor</button>
+                            </a>
+                            </div>
+
+                            <div class="form-group">
+                            <a asp-action="DoctorEditView" asp-controller="Admin">
+                                <button id="submit" class="btn btn-primary">Edit Doctor</button>
+                            </a>
+                            </div>
+
+                            <div class="form-group">
+                            <a asp-action="ShowAllDoctors" asp-controller="Patient">
+                                <button id="submit" class="btn btn-primary">Show All Doctors</button>
+                            </a>
+                            </div>
+
+                            <div class="form-group">
+                            <a asp-action="AddNurse" asp-controller="Admin">
+                                <button id="submit" class="btn btn-primary">Add Nurse</button>
+                            </a>
+                            </div>
+
+
+                            <div class="form-group">
+                            <a asp-action="DeleteNurse" asp-controller="Admin">
+                                <button id="submit" class="btn btn-primary">Delete Nurse</button>
+                            </a>
+                            </div>
+
+                            
+                            <div class="form-group">
+                            <a asp-action="NurseEditView" asp-controller="Admin">
+                                <button id="submit" class="btn btn-primary">Edit Nurse</button>
+                            </a>
+                            </div>
+
+
+                            <div class="form-group">
+                            <a asp-action="AllPatients" asp-controller="Admin">
+                                <button id="submit" class="btn btn-primary">All Patients</button>
+                            </a>
+                            </div>
+                            </div>
+                            </div>
+
+    <script src="js/JavaScript.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewData["Title"] = "SuperAdminPage";
+}
+
+<h1>Super Admin Page</h1>
+
+<br />
+<br />
+
+<a href="~/SuperAdmin/ViewAllAdmins" class="btn btn-primary">View All Admins</a>
+
+<br />
+<br />
+<a href="~/SuperAdmin/ViewAllSuperAdmins" class="btn btn-primary">View All Super Admins</a>
+<br />
+<br />
+
+<a href="~/SuperAdmin/AddNewAdmin" class="btn btn-primary">Add New Admin</a>
+<br />
+<br />
+<a href="~/SuperAdmin/AddNewSuperAdmin" class="btn btn-primary">Add New Super Admin</a>
+<br />
+<br />
+
+<a href="~/SuperAdmin/ViewAllDeptDoctors" class="btn btn-primary">View All Doctors</a>
+
+<br />
+<br />
+
+<a href="~/SuperAdmin/ViewAllDeptNurses" class="btn btn-primary">View All Nurses</a>
+
+<br />
+<br />
+
+<a href="~/SuperAdmin/ViewAllDepartments" class="btn btn-primary">View All Departments</a>
+
+<br />
+<br />
+
+<a href="~/SuperAdmin/AddNewDepartment" class="btn btn-primary">Add New Department</a>
+<br />
+<br />
+<div class="form-group">
+    <a asp-action="AllPatients" asp-controller="Admin">
+        <button id="submit" class="btn btn-primary">All Patients</button>
+    </a>
+</div>
