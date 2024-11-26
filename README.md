@@ -134,4 +134,6 @@ How to Run the Project
 5. Build and run the application using Visual Studio or dotnet CLI.
 6. Access the web application through your local server (e.g.,
    login:-
-   - as super admin-> username:gamel  password:Gamel! 
+   - as super admin-> username:gamel  password:Gamel!
+   - as Doctor-> username:ayman_  password:Ayman! 
+   - 
