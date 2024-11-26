@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 public class SuperAdminAddAdminViewModel
 {
-    public int Id { get; set; }
+    public int? Id { get; set; }
 
     public string? userid { get; set; }
 
@@ -43,7 +43,7 @@ public class SuperAdminAddAdminViewModel
     [MinLength(3, ErrorMessage = "Username must have more than 3 characters.")]
     [MaxLength(20, ErrorMessage = "Username cannot exceed 20 characters.")]
     [RegularExpression("^[a-zA-Z0-9_]+$", ErrorMessage = "Username can only contain letters, numbers, and underscores.")]
-    [Remote(action: "CheckUserName", controller: "SuperAdmin", AdditionalFields ="Id", ErrorMessage = "Username is already in use.")]
+    [Remote(action: "CheckUserName", controller: "Admin", AdditionalFields ="Id", ErrorMessage = "Username is already in use.")]
     public string Username { get; set; }
 
     [Required(ErrorMessage = "Password is required.")]
@@ -59,10 +59,9 @@ public class SuperAdminAddAdminViewModel
     [Compare("Password", ErrorMessage = "Passwords do not match.")]
     [Display(Name = "Confirm Password")]
     public string ConfirmPassword { get; set; }
-
     [DataType(DataType.Upload)]
     [FileExtensions(Extensions = "jpg,jpeg,png", ErrorMessage = "Image must be a JPG or PNG file.")]
-    public string? Image { get; set; } // Corrected naming
+    public string ?Image { get; set; } 
     [DataType(DataType.Upload)]
     [FileExtensions(Extensions = "jpg,jpeg,png", ErrorMessage = "Image must be a JPG or PNG file.")]
     public string? CurrentImage { get; set; }

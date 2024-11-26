@@ -174,16 +174,13 @@
                         </div><!-- /.member-img -->
                         <div class="member__info">
                             <h5 class="member__name"><a href="doctors-single-doctor1.html">Ahmed Mahmoud</a></h5>
-                            <p class="member__job">Fullstack Developer & Digital Marketer</p>
+                            <p class="member__job">Fullstack Developer </p>
                             <p class="member__desc">
                                 Muldoone obtained his undergraduate degree in Biomedical Engineering at Tulane
                                 University prior to attending St George's University School of Medicine
                             </p>
                             <div class="mt-20 d-flex flex-wrap justify-content-between align-items-center">
-                                <a href="doctors-single-doctor1.html" class="btn btn__secondary btn__link btn__rounded">
-                                    <span>Read More</span>
-                                    <i class="icon-arrow-right"></i>
-                                </a>
+                               
                                 <ul class="social-icons list-unstyled mb-0">
                                     <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
                                     <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
@@ -205,10 +202,7 @@
                                 address cosmetic issues, helping to revitalize the appearance of the skin
                             </p>
                             <div class="mt-20 d-flex flex-wrap justify-content-between align-items-center">
-                                <a href="doctors-single-doctor1.html" class="btn btn__secondary btn__link btn__rounded">
-                                    <span>Read More</span>
-                                    <i class="icon-arrow-right"></i>
-                                </a>
+                               
                                 <ul class="social-icons list-unstyled mb-0">
                                     <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
                                     <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
@@ -223,17 +217,14 @@
                             <img src="~/assets/images/team/3.jpg" alt="member img">
                         </div><!-- /.member-img -->
                         <div class="member__info">
-                            <h5 class="member__name"><a href="doctors-single-doctor1.html">Tassnim Eid</a></h5>
+                            <h5 class="member__name"><a href="doctors-single-doctor1.html">Tasneem Eid</a></h5>
                             <p class="member__job">Backend .Net Developer</p>
                             <p class="member__desc">
                                 Andaloro graduated from medical school and completed 3 years residency program
                                 in pediatrics. She passed rigorous exams by the American Board of Pediatrics.
                             </p>
                             <div class="mt-20 d-flex flex-wrap justify-content-between align-items-center">
-                                <a href="doctors-single-doctor1.html" class="btn btn__secondary btn__link btn__rounded">
-                                    <span>Read More</span>
-                                    <i class="icon-arrow-right"></i>
-                                </a>
+                                
                                 <ul class="social-icons list-unstyled mb-0">
                                     <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
                                     <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
@@ -256,10 +247,7 @@
                                 also diagnose and treat anything involving the reproductive tract in men.
                             </p>
                             <div class="mt-20 d-flex flex-wrap justify-content-between align-items-center">
-                                <a href="doctors-single-doctor1.html" class="btn btn__secondary btn__link btn__rounded">
-                                    <span>Read More</span>
-                                    <i class="icon-arrow-right"></i>
-                                </a>
+                               
                                 <ul class="social-icons list-unstyled mb-0">
                                     <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
                                     <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
@@ -281,10 +269,7 @@
                                 clinical laboratory are responsible for conducting tests that provide crucial information.
                             </p>
                             <div class="mt-20 d-flex flex-wrap justify-content-between align-items-center">
-                                <a href="doctors-single-doctor1.html" class="btn btn__secondary btn__link btn__rounded">
-                                    <span>Read More</span>
-                                    <i class="icon-arrow-right"></i>
-                                </a>
+                                
                                 <ul class="social-icons list-unstyled mb-0">
                                     <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
                                     <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
@@ -325,7 +310,7 @@
                             <i class="icon-head"></i>
                         </div><!-- /.service__icon -->
                         <div class="service__content">
-                            <h4 class="service__title">Neurology Clinic</h4>
+                            <h4 class="service__title">Neurology Department</h4>
                             <p class="service__desc">
                                 Some neurologists receive subspecialty training focusing on a particular area
                                 of
@@ -336,7 +321,8 @@
                                 <li>Neuro Oncology</li>
                                 <li>Geriatric Neurology</li>
                             </ul>
-                            <a href="services-single.html" class="btn btn__secondary btn__outlined btn__rounded">
+                            <a asp-action="ShowDepartments" asp-controller="Patient"
+                               class="btn btn__secondary btn__outlined btn__rounded">
                                 <span>Read More</span>
                                 <i class="icon-arrow-right"></i>
                             </a>
@@ -349,7 +335,7 @@
                             <i class="icon-heart"></i>
                         </div><!-- /.service__icon -->
                         <div class="service__content">
-                            <h4 class="service__title">Cardiology Clinic</h4>
+                            <h4 class="service__title">Cardiology Department</h4>
                             <p class="service__desc">
                                 All cardiologists study the disorders of the heart, but the study of adult
                                 and
@@ -360,7 +346,8 @@
                                 <li>Neuro Oncology</li>
                                 <li>Geriatric Neurology</li>
                             </ul>
-                            <a href="services-single.html" class="btn btn__secondary btn__outlined btn__rounded">
+                            <a asp-action="ShowDepartments" asp-controller="Patient"
+                                class="btn btn__secondary btn__outlined btn__rounded">
                                 <span>Read More</span>
                                 <i class="icon-arrow-right"></i>
                             </a>
@@ -373,18 +360,19 @@
                             <i class="icon-microscope"></i>
                         </div><!-- /.service__icon -->
                         <div class="service__content">
-                            <h4 class="service__title">Pathology Clinic</h4>
+                            <h4 class="service__title">Pediatrics Department</h4>
                             <p class="service__desc">
-                                Pathology is the study of disease, it is the bridge between science and
-                                medicine.
-                                Also it underpins every aspect of patient care, from diagnostic testing and treatment.
+                                The Pediatrics Department focuses on the medical 
+                                care and treatment of infants, children, and adolescents.
+
                             </p>
                             <ul class="list-items list-items-layout1 list-unstyled">
                                 <li>Surgical Pathology</li>
                                 <li>Histopathology</li>
                                 <li>Cytopathology </li>
                             </ul>
-                            <a href="services-single.html" class="btn btn__secondary btn__outlined btn__rounded">
+                            <a asp-action="ShowDepartments" asp-controller="Patient"
+                               class="btn btn__secondary btn__outlined btn__rounded">
                                 <span>Read More</span>
                                 <i class="icon-arrow-right"></i>
                             </a>
@@ -397,18 +385,19 @@
                             <i class="icon-dropper"></i>
                         </div><!-- /.service__icon -->
                         <div class="service__content">
-                            <h4 class="service__title">Laboratory Analysis</h4>
+                            <h4 class="service__title">Surgery Department</h4>
                             <p class="service__desc">
-                                Analyzing the radon or radon progeny concentrations with passive devices, or
-                                the
-                                act of calibrating radon or radon progeny measurement devices.
+                                critical unit in hospitals, responsible for performing surgical procedures to diagnose, 
+                                treat, or manage various medical conditions. It includes a team of highly skilled surgeons,
+                                anesthesiologists, nurses, and support staff.
                             </p>
                             <ul class="list-items list-items-layout1 list-unstyled">
                                 <li>Newborn Care</li>
                                 <li>Umbilical Cord Appearance </li>
                                 <li>Repositioning Techniques</li>
                             </ul>
-                            <a href="services-single.html" class="btn btn__secondary btn__outlined btn__rounded">
+                            <a asp-action="ShowDepartments" asp-controller="Patient"
+                               class="btn btn__secondary btn__outlined btn__rounded">
                                 <span>Read More</span>
                                 <i class="icon-arrow-right"></i>
                             </a>
@@ -421,7 +410,7 @@
                             <i class="icon-heart3"></i>
                         </div><!-- /.service__icon -->
                         <div class="service__content">
-                            <h4 class="service__title">Pediatric Clinic</h4>
+                            <h4 class="service__title">Pediatric Department</h4>
                             <p class="service__desc">
                                 Pediatric providers see patients from birth into early adulthood to make sure
                                 children achieve stay healthy. Our care includes preventive health checkups.
@@ -431,35 +420,14 @@
                                 <li>Research Analyst</li>
                                 <li>Quality Assurance</li>
                             </ul>
-                            <a href="services-single.html" class="btn btn__secondary btn__outlined btn__rounded">
+                            <a asp-action="ShowDepartments" asp-controller="Patient"
+                               class="btn btn__secondary btn__outlined btn__rounded">
                                 <span>Read More</span>
                                 <i class="icon-arrow-right"></i>
                             </a>
                         </div><!-- /.service__content -->
                     </div><!-- /.service-item -->
-                    <!-- service item #6 -->
-                    <div class="service-item">
-                        <div class="service__icon">
-                            <i class="icon-heart2"></i>
-                            <i class="icon-heart2"></i>
-                        </div><!-- /.service__icon -->
-                        <div class="service__content">
-                            <h4 class="service__title">Cardiac Clinic</h4>
-                            <p class="service__desc">
-                                For people requiring additional follow up, the Cardiac Clinic provides rapid
-                                access to professionals specialized in diagnosing and treating heart disease.
-                            </p>
-                            <ul class="list-items list-items-layout1 list-unstyled">
-                                <li>Macular degeneration</li>
-                                <li>Diabetic retinopathy</li>
-                                <li>Excessive tearing</li>
-                            </ul>
-                            <a href="services-single.html" class="btn btn__secondary btn__outlined btn__rounded">
-                                <span>Read More</span>
-                                <i class="icon-arrow-right"></i>
-                            </a>
-                        </div><!-- /.service__content -->
-                    </div><!-- /.service-item -->
+                   
                 </div>
             </div><!-- /.col-12 -->
         </div><!-- /.row -->

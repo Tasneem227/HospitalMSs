@@ -4,12 +4,16 @@
 @{
     ViewData["Title"] = "ViewAllDeptNurses";
 }
-
-<h1>View All Department Nurses</h1>
-
+@if (ViewBag.depId != 0)
+{
+    <h1 style="color:darkturquoise"> @ViewBag.depName Department Nurses</h1>
+}
+else{
+<h1 style="color:darkturquoise"> Department Nurses</h1>
+}
 <br />
 <br />
-
+ @if(Model.Any()){
 <div style="text-align:center">
     <table class="table table-responsive table-hover">
         <thead class="table-light">
@@ -36,4 +40,16 @@
             </tr>
         }
     </table>
-</div>
+    </div>
+}
+else
+{
+    @if (ViewBag.depId == 0)
+    {
+        <h2 style="color:darkturquoise ; text-align:center"> Hospital Dosen't Have Any Nurses</h2>
+    }
+    else
+    {
+        <h2 style="color:darkturquoise; text-align:center"> Department Dosen't Have Any Nurses</h2>
+    }
+}

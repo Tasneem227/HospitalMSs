@@ -1,48 +1,142 @@
-﻿
-@{
-    ViewData["Title"] = "SuperAdminPage";
+﻿@{
+    ViewData["Title"] = "Super Admin Page";
 }
 
-<h1>Super Admin Page</h1>
+<div class="container py-5">
+    <!-- Header -->
+    <div class="text-center mb-5">
+        <h1 class="display-4">Super Admin Dashboard</h1>
+        <p class="lead">Manage admins, doctors, nurses, departments, and more from a single interface.</p>
+        <hr class="my-4" />
+    </div>
 
-<br />
-<br />
+    <!-- Dashboard Cards -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <!-- Card: View All Admins -->
+        <div class="col">
+            <div class="card shadow-lg h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-users-cog fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title">View All Admins</h5>
+                    <p class="card-text">Manage and review the list of all admins in the system.</p>
+                    <a href="~/SuperAdmin/ViewAllAdmins" class="btn btn-primary w-100">View Admins</a>
+                </div>
+            </div>
+        </div>
 
-<a href="~/SuperAdmin/ViewAllAdmins" class="btn btn-primary">View All Admins</a>
+        <!-- Card: View All Super Admins -->
+        <div class="col">
+            <div class="card shadow-lg h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-user-shield fa-3x text-info mb-3"></i>
+                    <h5 class="card-title">View All Super Admins</h5>
+                    <p class="card-text">Manage and review the list of all super admins.</p>
+                    <a href="~/SuperAdmin/ViewAllSuperAdmins" class="btn btn-info w-100">View Super Admins</a>
+                </div>
+            </div>
+        </div>
 
-<br />
-<br />
-<a href="~/SuperAdmin/ViewAllSuperAdmins" class="btn btn-primary">View All Super Admins</a>
-<br />
-<br />
+        <!-- Card: Add New Admin -->
+        <div class="col">
+            <div class="card shadow-lg h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-user-plus fa-3x text-success mb-3"></i>
+                    <h5 class="card-title">Add New Admin</h5>
+                    <p class="card-text">Add new admins to the system with ease.</p>
+                    <a href="~/SuperAdmin/AddNewAdmin" class="btn btn-success w-100">Add Admin</a>
+                </div>
+            </div>
+        </div>
 
-<a href="~/SuperAdmin/AddNewAdmin" class="btn btn-primary">Add New Admin</a>
-<br />
-<br />
-<a href="~/SuperAdmin/AddNewSuperAdmin" class="btn btn-primary">Add New Super Admin</a>
-<br />
-<br />
+        <!-- Card: Add New Super Admin -->
+        <div class="col">
+            <div class="card shadow-lg h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-user-cog fa-3x text-warning mb-3"></i>
+                    <h5 class="card-title">Add New Super Admin</h5>
+                    <p class="card-text">Create new super admins for advanced management.</p>
+                    <a href="~/SuperAdmin/AddNewSuperAdmin" class="btn btn-warning w-100">Add Super Admin</a>
+                </div>
+            </div>
+        </div>
 
-<a href="~/SuperAdmin/ViewAllDeptDoctors" class="btn btn-primary">View All Doctors</a>
+        <!-- Card: View All Doctors -->
+        <div class="col">
+            <div class="card shadow-lg h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-user-md fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title">View All Doctors</h5>
+                    <p class="card-text">Browse and manage all department doctors.</p>
+                    <a href="~/SuperAdmin/ViewAllDeptDoctors" class="btn btn-primary w-100">View Doctors</a>
+                </div>
+            </div>
+        </div>
 
-<br />
-<br />
+        <!-- Card: View All Nurses -->
+        <div class="col">
+            <div class="card shadow-lg h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-user-nurse fa-3x text-info mb-3"></i>
+                    <h5 class="card-title">View All Nurses</h5>
+                    <p class="card-text">Browse and manage all department nurses.</p>
+                    <a href="~/SuperAdmin/ViewAllDeptNurses" class="btn btn-info w-100">View Nurses</a>
+                </div>
+            </div>
+        </div>
 
-<a href="~/SuperAdmin/ViewAllDeptNurses" class="btn btn-primary">View All Nurses</a>
+        <!-- Card: View All Departments -->
+        <div class="col">
+            <div class="card shadow-lg h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-building fa-3x text-secondary mb-3"></i>
+                    <h5 class="card-title">View All Departments</h5>
+                    <p class="card-text">Explore all departments in the system.</p>
+                    <a href="~/SuperAdmin/ViewAllDepartments" class="btn btn-secondary w-100">View Departments</a>
+                </div>
+            </div>
+        </div>
 
-<br />
-<br />
+        <!-- Card: Add New Department -->
+        <div class="col">
+            <div class="card shadow-lg h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-plus-square fa-3x text-success mb-3"></i>
+                    <h5 class="card-title">Add New Department</h5>
+                    <p class="card-text">Create and manage new departments efficiently.</p>
+                    <a href="~/SuperAdmin/AddNewDepartment" class="btn btn-success w-100">Add Department</a>
+                </div>
+            </div>
+        </div>
 
-<a href="~/SuperAdmin/ViewAllDepartments" class="btn btn-primary">View All Departments</a>
+        <!-- Card: All Patients -->
+        <div class="col">
+            <div class="card shadow-lg h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-procedures fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title">All Patients</h5>
+                    <p class="card-text">Access and manage the list of all patients.</p>
+                    <a asp-action="AllPatients" asp-controller="Admin" class="btn btn-primary w-100">View Patients</a>
+                </div>
+            </div>
+        </div>
 
-<br />
-<br />
-
-<a href="~/SuperAdmin/AddNewDepartment" class="btn btn-primary">Add New Department</a>
-<br />
-<br />
-<div class="form-group">
-    <a asp-action="AllPatients" asp-controller="Admin">
-        <button id="submit" class="btn btn-primary">All Patients</button>
-    </a>
+    </div>
 </div>
+
+<!-- Custom CSS for Effects -->
+<style>
+    .card {
+        border: none;
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+</style>

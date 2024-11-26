@@ -4,38 +4,63 @@
 @{
     ViewData["Title"] = "ViewAllDeptDoctors";
 }
-
-<h1>View All Department Doctors</h1>
-
+@if (ViewBag.depId!=0){
+<h1 style="color:darkturquoise"> @ViewBag.depName Department Doctors</h1>
+}
+else{
+<h1 style="color:darkturquoise"> Department Doctors</h1>
+}
 <br />
 <br />
-
+ @if(Model.Any()){
 <div style="text-align:center">
     <table class="table table-responsive table-hover">
         <thead class="table-light">
             <tr>
                 <th>Image</th>
                 <th>Name</th>
+
                 <th>Birth Date</th>
                 <th>Gender</th>
                 <th>UserName</th>
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Doctor Appointments</th>
+                <th>Delete</th>
             </tr>
         </thead>
+       
         @foreach (var item in Model)
         {
             <tr>
                 <td><img src="~/Images/Doctors/@item.Imag" style="width:100px; height:100px" /></td>
                 <td>@item.FName @item.LName</td>
+
                 <td>@item.BirthDate</td>
                 <td>@item.Gender</td>
                 <td>@item.Username</td>
                 <td>@item.Email</td>
                 <td>@item.Phone</td>
-                <td><a asp-action="ViewDoctorBookedAppointments" asp-controller="SuperAdmin" asp-route-DoctId="@item.Id" class="btn btn-success">Appointments</a></td>
-            </tr>
-        }
+                <td><a asp-action="ViewDoctorBookedAppointments" asp-controller="SuperAdmin"
+                    asp-route-DoctId="@item.Id" asp-route-docname="@item.FName @item.LName" class="btn btn-success">Appointments</a></td>
+
+                
+                    
+                </tr>
+            }
+        
+
     </table>
-</div>
+    </div>
+}
+else
+{
+    @if (ViewBag.depId != 0)
+    {
+        <h2 style="color:darkturquoise ; text-align:center"> Hospital Dosen't Have Any Doctors</h2>
+    }
+    else
+    {
+        <h2 style="color:darkturquoise; text-align:center"> Department Dosen't Have Any Doctors</h2>
+    }
+}

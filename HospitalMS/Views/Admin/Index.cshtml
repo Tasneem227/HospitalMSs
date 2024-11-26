@@ -1,78 +1,121 @@
 ﻿@model AdminNurseDoctorViewModel
 @{
-    ViewData["Title"] = "Admin";
+    ViewData["Title"] = "Admin Dashboard";
 }
 
-<html style="height:-moz-fit-content; scroll-behavior:auto">
-<head style="height:-moz-fit-content; scroll-behavior:auto">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="~/css/StyleSheet.css">
-    
-</head>
-<body style="height:-moz-fit-content; scroll-behavior:auto ">
+<!-- Header -->
+<div class="container my-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4">Hello, Admin!</h1>
+        <p class="lead">Manage doctors, nurses, and patients efficiently.</p>
+    </div>
 
+    <!-- Dashboard Actions -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <!-- Add Doctor -->
+        <div class="col">
+            <div class="card shadow-lg h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-user-md fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title">Add Doctor</h5>
+                    <a asp-action="AddDoctor" asp-controller="Admin" class="btn btn-primary w-100 mt-3">Add</a>
+                </div>
+            </div>
+        </div>
 
+        <!-- Delete Doctor -->
+        <div class="col">
+            <div class="card shadow-lg h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-user-times fa-3x text-danger mb-3"></i>
+                    <h5 class="card-title">Delete Doctor</h5>
+                    <a asp-action="DeleteDoctor" asp-controller="Admin" class="btn btn-danger w-100 mt-3">Delete</a>
+                </div>
+            </div>
+        </div>
 
-    <br />
-    <h3>Hello Admin!</h3>
-    <br />
-                        
-                            <!-- Add the button container here -->
-    <div class="row">
-        <div class="col-md-4">
-                            <div class="form-group">
-                            <a asp-action="AddDoctor" asp-controller="Admin">
-                                <button id="submit" class="btn btn-primary">Add Doctor</button>
-                            </a>
-                            </div>
+        <!-- Edit Doctor -->
+        <div class="col">
+            <div class="card shadow-lg h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-user-edit fa-3x text-warning mb-3"></i>
+                    <h5 class="card-title">Edit Doctor</h5>
+                    <a asp-action="DoctorEditView" asp-controller="Admin" class="btn btn-warning w-100 mt-3">Edit</a>
+                </div>
+            </div>
+        </div>
 
-                            <div class="form-group">
-                            <a asp-action="DeleteDoctor" asp-controller="Admin">
-                                <button id="submit" class="btn btn-primary">Delete Doctor</button>
-                            </a>
-                            </div>
+        <!-- Show All Doctors -->
+        <div class="col">
+            <div class="card shadow-lg h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-users fa-3x text-info mb-3"></i>
+                    <h5 class="card-title">Show All Doctors</h5>
+                    <a asp-action="ShowAllDoctors" asp-controller="Patient" class="btn btn-info w-100 mt-3">Show</a>
+                </div>
+            </div>
+        </div>
 
-                            <div class="form-group">
-                            <a asp-action="DoctorEditView" asp-controller="Admin">
-                                <button id="submit" class="btn btn-primary">Edit Doctor</button>
-                            </a>
-                            </div>
+        <!-- Add Nurse -->
+        <div class="col">
+            <div class="card shadow-lg h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-user-nurse fa-3x text-success mb-3"></i>
+                    <h5 class="card-title">Add Nurse</h5>
+                    <a asp-action="AddNurse" asp-controller="Admin" class="btn btn-success w-100 mt-3">Add</a>
+                </div>
+            </div>
+        </div>
 
-                            <div class="form-group">
-                            <a asp-action="ShowAllDoctors" asp-controller="Patient">
-                                <button id="submit" class="btn btn-primary">Show All Doctors</button>
-                            </a>
-                            </div>
+        <!-- Delete Nurse -->
+        <div class="col">
+            <div class="card shadow-lg h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-user-slash fa-3x text-danger mb-3"></i>
+                    <h5 class="card-title">Delete Nurse</h5>
+                    <a asp-action="DeleteNurse" asp-controller="Admin" class="btn btn-danger w-100 mt-3">Delete</a>
+                </div>
+            </div>
+        </div>
 
-                            <div class="form-group">
-                            <a asp-action="AddNurse" asp-controller="Admin">
-                                <button id="submit" class="btn btn-primary">Add Nurse</button>
-                            </a>
-                            </div>
+        <!-- Edit Nurse -->
+        <div class="col">
+            <div class="card shadow-lg h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-user-cog fa-3x text-warning mb-3"></i>
+                    <h5 class="card-title">Edit Nurse</h5>
+                    <a asp-action="NurseEditView" asp-controller="Admin" class="btn btn-warning w-100 mt-3">Edit</a>
+                </div>
+            </div>
+        </div>
 
+        <!-- All Patients -->
+        <div class="col">
+            <div class="card shadow-lg h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-procedures fa-3x text-info mb-3"></i>
+                    <h5 class="card-title">All Patients</h5>
+                    <a asp-action="AllPatients" asp-controller="Admin" class="btn btn-info w-100 mt-3">View</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-                            <div class="form-group">
-                            <a asp-action="DeleteNurse" asp-controller="Admin">
-                                <button id="submit" class="btn btn-primary">Delete Nurse</button>
-                            </a>
-                            </div>
+<!-- Custom CSS for Styling -->
+<style>
+    .card {
+        border: none;
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
 
-                            
-                            <div class="form-group">
-                            <a asp-action="NurseEditView" asp-controller="Admin">
-                                <button id="submit" class="btn btn-primary">Edit Nurse</button>
-                            </a>
-                            </div>
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
 
-
-                            <div class="form-group">
-                            <a asp-action="AllPatients" asp-controller="Admin">
-                                <button id="submit" class="btn btn-primary">All Patients</button>
-                            </a>
-                            </div>
-                            </div>
-                            </div>
-
-    <script src="js/JavaScript.js"></script>
-</body>
-</html>
+    .btn {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+</style>

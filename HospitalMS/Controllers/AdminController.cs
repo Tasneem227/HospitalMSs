@@ -256,7 +256,7 @@ namespace HospitalMS.Controllers
             }
             
                 AdminNurseDoctorViewModel viewModel = new AdminNurseDoctorViewModel();
-            ModelState.AddModelError("DepartmentId", "Select Department");
+            
                 viewModel.FName = nurse.FName;
                 viewModel.LName = nurse.LName;
                 viewModel.Salary = nurse.Salary;

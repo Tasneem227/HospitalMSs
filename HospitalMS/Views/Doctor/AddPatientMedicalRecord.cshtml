@@ -44,12 +44,12 @@ else
         </div>
 
         <br>
-        <div>
-            <label asp-for="Note"> </label>
-            <input class="form form-control" asp-for="Note" />
+        <div class="mb-3">
+            <label asp-for="Note" class="form-label fw-bold"></label>
+            <textarea asp-for="Note" rows="20" class="form-control" placeholder=""></textarea>
             <span asp-validation-for="Note" class="text-danger"></span>
         </div>
-
+        
         <br>  <br>
 
         <div class="form-button mt-3">

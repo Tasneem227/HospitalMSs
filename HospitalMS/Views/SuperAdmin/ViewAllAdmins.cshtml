@@ -5,7 +5,7 @@
     ViewData["Title"] = "ViewAllAdmins";
 }
 
-<h1>View All Admins</h1>
+<h1>Hospital Admins</h1>
 
 <br />
 <br />
@@ -38,7 +38,7 @@
                 <td>@item.Email</td>
                 <td>@item.Department.Name</td>
                 <td><a asp-action="EditAdmin" asp-controller="SuperAdmin" asp-route-AdminId="@item.Id" class="btn btn-success " >Edit</a></td>
-                <td><a asp-action="DeleteDoctor" asp-controller="SuperAdmin" asp-route-id="@item.Id" class="btn btn-success">Delete</a></td>
+                <td><a asp-action="DeleteDoctor" asp-controller="SuperAdmin" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>
             </tr>
         }
     </table>

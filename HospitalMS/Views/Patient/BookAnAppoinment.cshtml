@@ -5,16 +5,20 @@
 
 <h1>Book An Appoinment</h1>
 
-<br />
-<br />
+<h3 >
+ Dr @ViewBag.DoctorName
+ </h3>
+ <br />
 
 <form asp-controller="Patient" asp-action="SaveAppointment">
 
     <input type="hidden" name="DocId" value="@ViewBag.DocId" />
+    <input type="hidden" name="DocName" value="@ViewBag.DoctorName" />
 
     <label>Date - Time</label>
     <br />
-    <select name="DateTimeAppointment" class="form form-control">
+    <select name="DateTimeAppointment" class=" form-select">
+        <option value="" selected disabled> Select An Appointment </option>
         @foreach (var item in (List<Booking>)ViewBag.BookingLst)
         {
             DateTime DT = item.Date.ToDateTime(item.Time);

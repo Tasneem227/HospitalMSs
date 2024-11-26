@@ -45,7 +45,7 @@ namespace HospitalMS.Controllers
                 Patient patient = new Patient();
                 patient.FName = Userapp.FName;
                 patient.LName = Userapp.LName;
-                //patient. = Userapp.CurrentImage;
+                patient.Imag = Userapp.Image;
                 patient.BirthDate = Userapp.BirthDate;
                 patient.Email = Userapp.Email;
                 patient.Phone = Userapp.PhoneNumber;

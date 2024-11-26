@@ -10,8 +10,9 @@ namespace HospitalMS.Models
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
+        public string ?image { get; set; }
         [Required]
-        [MaxLength(500)]
+       
         public string? Description { get; set; }
 
         public ICollection<Booking>? Bookings { get; set; }

@@ -33,6 +33,7 @@
                         <table class="table table-bordered table-hover" style=" Background:azure">
                             <tr>
                             <td>Id</td>
+                            <td>Image</td>
                             <td>Full Name</td>
                             <td>Username</td>
                             <td>Ensure delete</td>
@@ -41,6 +42,8 @@
                                 {                               
                                 <tr>
                                     <td>@doctor.Id</td>
+                                    <td><img src="~/Images/Doctors/@doctor.Imag" style="width:80px; height:70px" /></td>
+
                                     <td>@doctor.FName @doctor.LName</td>
                                     <td>@doctor.Username</td>
                                     <td>

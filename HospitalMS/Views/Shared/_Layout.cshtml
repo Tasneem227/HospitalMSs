@@ -93,27 +93,60 @@
                             <li class="nav__item">
                                 <a class="nav__item-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li><!-- /.nav-item -->
+                            @if (!User.IsInRole("Super Admin"))
+                            {
+
                             <li class="nav__item">
                                 <a class="nav__item-link" asp-area="" asp-controller="Patient" asp-action="ShowDepartments">Departments</a>
                             </li><!-- /.nav-item -->
+                            
                             <li class="nav__item">
                                 <a class="nav__item-link" asp-area="" asp-controller="Patient" asp-action="ShowAllDoctors">Hospital Doctors</a>
                             </li><!-- /.nav-item -->
+                            }
                     @if (User.Identity.IsAuthenticated)
                         {
-                        
-                                
-                               @if(User.IsInRole("Admin")){
+
+
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <li class="nav__item">
+                                        <a class="nav__item-link" asp-area="" asp-controller="Admin" asp-action="AdminProfile">Profile</a>
+                                    </li>
+                                    
+                                    <li class="nav__item">
+                                        <a class="nav__item-link" asp-area="" asp-controller="Admin" asp-action="AllPatients">Hospital Patients</a>
+                                    </li>
+
+                                    <!-- /.nav-item -->
                                 <li class="nav__item">
-                                    <a class="nav__item-link" asp-area="" asp-controller="Admin" asp-action="AdminPage">Admin</a>
+                                    <a class="nav__item-link" asp-area="" asp-controller="Admin" asp-action="AdminPage">Dashboard</a>
                                 </li><!-- /.nav-item -->
+                                   
                                }
                                 @if (User.IsInRole("Super Admin"))
                                 {
-
+                                    
                                     <li class="nav__item">
-                                        <a class="nav__item-link" asp-area="" asp-controller="SuperAdmin" asp-action="SuperAdminPage">SuperAdmin</a>
+                                        <a class="nav__item-link" asp-area="" asp-controller="SuperAdmin" asp-action="SuperAdminProfile">Profile</a>
                                     </li><!-- /.nav-item -->
+                                     <li class="nav__item">
+                                        <a class="nav__item-link" asp-area="" asp-controller="SuperAdmin" asp-action="SuperAdminPage">DashBoard</a>
+                                    </li><!-- /.nav-item -->
+                                            <li class="nav__item">
+                                        <a class="nav__item-link" asp-area="" asp-controller="Admin" asp-action="AllPatients">Hospital Patients</a>
+                                            </li><!-- /.nav-item -->
+                                    <li class="nav__item">
+                                        <a class="nav__item-link" asp-area="" asp-controller="SuperAdmin" asp-action="ViewAllDeptDoctors">Hospital Doctors</a>
+                                    </li>
+                                    <li class="nav__item">
+                                        <a class="nav__item-link" asp-area="" asp-controller="SuperAdmin" asp-action="ViewAllDeptNurses">Hospital Nurses</a>
+                                    </li>
+                                    <li class="nav__item">
+                                        <a class="nav__item-link" asp-area="" asp-controller="SuperAdmin" asp-action="ViewAllAdmins">Hospital Admins</a>
+                                    </li>
+
+                                    <!-- /.nav-item -->
                                 }
                                 @if (User.IsInRole("Doctor"))
                                 {
@@ -136,9 +169,7 @@
                                 }
                                 @if (User.IsInRole("Nurse"))
                                 {
-                                    <li class="nav__item">
-                                        <a class="nav__item-link" asp-area="" asp-controller="Nurse" asp-action="Index">Nurse </a>
-                                    </li><!-- /.nav-item -->
+                                   
                                     <li class="nav__item">
                                         <a class="nav__item-link" asp-area="" asp-controller="Nurse" asp-action="NurseProfile">Profile</a>
                                     </li>
@@ -221,7 +252,7 @@
                                     compassionate manner. We hope you will allow us to care for you and strive to be the first and best
                                     choice for your family healthcare.
                                 </p>
-                                <a href="appointment.html" class="btn btn__primary btn__primary-style2 btn__link">
+                                <a asp-action="ShowAllDoctors" asp-controller="Patient">
                                     <span>Make Appointment</span> <i class="icon-arrow-right"></i>
                                 </a>
                             </div><!-- /.footer-widget__content -->
@@ -231,12 +262,12 @@
                                 <h6 class="footer-widget__title">Departments</h6>
                                 <nav>
                                     <ul class="list-unstyled">
-                                        <li><a href="#">Neurology Clinic</a></li>
-                                        <li><a href="#">Cardiology Clinic</a></li>
-                                        <li><a href="#">Pathology Clinic</a></li>
-                                        <li><a href="#">Laboratory Analysis</a></li>
-                                        <li><a href="#">Pediatric Clinic</a></li>
-                                        <li><a href="#">Cardiac Clinic</a></li>
+                                        <li><a asp-action="ShowDepartments" asp-controller="Patient" >Hematology </a></li>
+                                        <li><a asp-action="ShowDepartments" asp-controller="Patient">Cardiology </a></li>
+                                        <li><a asp-action="ShowDepartments" asp-controller="Patient">Neurology </a></li>
+                                        <li><a asp-action="ShowDepartments" asp-controller="Patient">Surgery</a></li>
+                                        <li><a asp-action="ShowDepartments" asp-controller="Patient">Pediatric </a></li>
+                                        <li><a asp-action="ShowDepartments" asp-controller="Patient">Emergency</a></li>
                                     </ul>
                                 </nav>
                             </div><!-- /.footer-widget__content -->

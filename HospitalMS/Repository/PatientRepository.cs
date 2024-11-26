@@ -34,10 +34,18 @@ namespace HospitalMS.Repository
 
             return patients;
         }
-
+        public void Update(Patient patient)
+        {
+            context.Update(patient);
+        }
         public void Save()
         {
             context.SaveChanges();
+        }
+        public void RemoveById(int id)
+        {
+            Patient patient = GetById(id);
+            context.Remove(patient);
         }
         public Patient SearchByUserName(string username)
         {

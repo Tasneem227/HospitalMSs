@@ -10,6 +10,8 @@ namespace HospitalMS.Repository
         public List<Patient> GetAllPatientByDocId(int DocId);
 
         public Patient GetById(int id);
+        public void Update(Patient patient);
+        public void RemoveById(int id);
         public void Save();
         public Patient SearchByUserName(string username);
 

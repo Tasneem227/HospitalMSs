@@ -1,63 +1,72 @@
-﻿@model ApplicationUser
-@{
-    ViewData["Title"] = "Profile";
-}
-
-<div class="container mt-5">
+﻿<div class="container mt-5">
     <div class="card shadow-sm">
         <div class="card-header bg-primary text-white">
             <h3 class="mb-0">@ViewData["Title"]</h3>
+            <h3 class="mb-3 text-light text-center">Your Profile</h3>
         </div>
 
-        <div class="card-body">
+        <div class="card-body" style="background-color: #f9f9f9; font-size:16px;">
+            <br />
             <div class="row">
                 <!-- Profile Image Section -->
                 <div class="col-md-4 text-center mb-4">
                     <img src="@Url.Content($"~/Images/Doctors/{Model.Image ?? "default.jpg"}")"
                          class="img-fluid rounded-circle border border-secondary shadow-sm"
                          style="width: 200px; height: 200px;"
-                         alt="Profile Picture">
+                         alt="Profile Picture"
+                         data-bs-toggle="tooltip" title="Your Profile Picture">
                 </div>
 
                 <!-- Profile Details Section -->
-                <div class="col-md-8">
-                    <h4 class="mb-3 text-secondary">Your Details</h4>
-                    <h4 class="mb-3 text-secondary"> @string.Join(", ", ViewBag.role as IList<string>)</h4>
+                <div class="col-md-8 text-md-start text-center">
+                   
 
-                    <table class="table table-borderless">
-                        <tbody class="fs-100 fw-bold">
-                            <!-- Larger font size and bold weight -->
+                    <table class="table table-borderless table-striped">
+                        <tbody>
                             <tr>
-                                <th scope="row" class="text-muted">Name:  @Model.FName @Model.LName</th>
+                                <th scope="row" class="text-muted">
+                                    <i class="fas fa-user"></i> Name: @Model.FName @Model.LName
+                                </th>
                             </tr>
                             <tr>
-                                <th scope="row" class="text-muted">Username:  @Model.UserName</th>
+                                <th scope="row" class="text-muted">
+                                    <i class="fas fa-envelope"></i> Email: @Model.Email
+                                </th>
                             </tr>
                             <tr>
-                                <th scope="row" class="text-muted">Email:  @Model.Email</th>
+                                <th scope="row" class="text-muted">
+                                    <i class="fas fa-calendar"></i> Birth Date: @Model.BirthDate.ToString("MMMM dd, yyyy")
+                                </th>
                             </tr>
                             <tr>
-                                <th scope="row" class="text-muted">Birth Date:  @Model.BirthDate.ToString("MMMM dd, yyyy")</th>
+                                <th scope="row" class="text-muted">
+                                    <i class="fas fa-phone"></i> Phone: @Model.PhoneNumber
+                                </th>
                             </tr>
                             <tr>
-                                <th scope="row" class="text-muted">Gender:  @Model.Gender</th>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="text-muted">Phone:  @Model.PhoneNumber</th>
+                                <th scope="row" class="text-muted">
+                                    <i class="fas fa-user-tag"></i> Gender: @Model.Gender
+                                </th>
                             </tr>
                         </tbody>
                     </table>
 
-                    <!-- Edit Button for Doctors -->
+                    <!-- Edit Buttons -->
                     @if (User.IsInRole("Doctor"))
                     {
-                        <a asp-action="DoctorEditView" asp-controller="Doctor" class="btn btn-success mt-3">
+                        <a asp-action="DoctorEditView" asp-controller="Doctor" class="btn btn-success mt-3 w-100">
                             Edit Profile
                         </a>
                     }
                     @if (User.IsInRole("Nurse"))
                     {
-                        <a asp-action="NurseEditView" asp-controller="Nurse" class="btn btn-success mt-3">
+                        <a asp-action="NurseEditView" asp-controller="Nurse" class="btn btn-success mt-3 w-100">
+                            Edit Profile
+                        </a>
+                    }
+                    @if (User.IsInRole("Patient"))
+                    {
+                        <a asp-action="PatientEditView" asp-controller="Patient" class="btn btn-success mt-3 w-20">
                             Edit Profile
                         </a>
                     }

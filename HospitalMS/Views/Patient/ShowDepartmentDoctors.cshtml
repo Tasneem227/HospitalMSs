@@ -1,26 +1,87 @@
 ﻿@model List<Doctor>
 @{
-    ViewData["Title"] = "ShowDepartmentDoctors";
+    ViewData["Title"] = "Show Department Doctors";
 }
 
-<h1>Department Doctors</h1>
+<!-- Header -->
+<div class="text-center my-5 bg-primary text-light py-4 rounded">
+    <h1 class="display-4">Meet Our Doctors</h1>
+    <p class="lead">Highly qualified professionals dedicated to your health.</p>
+</div>
 
-<br />
-<br />
+<!-- Doctors Grid -->
+<div class="container">
+    <div class="row g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow-lg h-100">
+                    <!-- Doctor Image -->
+                    <img src="~/Images/Doctors/@item.Imag"
+                         alt="Doctor Photo"
+                         class="card-img-top img-fluid"
+                         style="object-fit: cover; height: 270px;">
 
-@foreach(var item in Model)
-{
-    <img src="~/Images/Doctors/@item.Imag" style="width:200px; height:200px" />
-    <br />
-    <br />
-    <h4>Dr : <span style="color:orangered">@item.FName @item.LName</span> </h4>
-    <h4>Gender : <span style="color:orangered">@item.Gender</span> </h4>
-
-    <div style="text-align:center">
-        <a asp-action="BookAnAppoinment" asp-controller="Patient" asp-route-DocId="@item.Id" class="btn btn-success"><h6>Book an appoinment</h6></a>
+                    <!-- Doctor Info -->
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Dr. @item.FName @item.LName</h4>
+                        <p class="card-text">
+                            <span class="text-muted">Gender:</span>
+                            <span class="text-primary">@item.Gender</span>
+                        </p>
+                        <p class="card-text">
+                            <span class="text-muted">Phone:</span>
+                            <span class="text-primary">@item.Phone</span>
+                        </p>
+                        <p class="card-text">
+                            <span class="text-muted">Email:</span>
+                            <span class="text-primary">@item.Email</span>
+                        </p>
+                    </div>
+                    @if (User.IsInRole("Patient"))
+                    {
+                        <!-- Action Button -->
+                        <div class="card-footer bg-light text-center">
+                            <a asp-action="BookAnAppoinment"
+                            asp-controller="Patient"
+                            asp-route-DocId="@item.Id"
+                            class="btn btn-success w-75">
+                                Book an Appointment
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
     </div>
+</div>
 
-    <br />
-    <hr />
-    <br />
-}
+<!-- Custom CSS -->
+<style>
+    .card {
+        border: none;
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+    .card-img-top {
+        transition: transform 0.3s ease-in-out;
+    }
+
+        .card-img-top:hover {
+            transform: scale(1.05);
+        }
+
+    .btn-success {
+        transition: background-color 0.3s ease-in-out, transform 0.2s;
+    }
+
+        .btn-success:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+</style>

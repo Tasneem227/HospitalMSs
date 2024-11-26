@@ -25,8 +25,8 @@ namespace HospitalMS.Models
         public string Username { get; set; }
         [Required]
         public string Password { get; set; }
-        //[Required]
-        //public string? Imag { get; set; }
+        [Required]
+       public string? Imag { get; set; }
         public ICollection<Booking> Bookings { get; set; }
 
         public List<Nurse> Nurses { get; set; }

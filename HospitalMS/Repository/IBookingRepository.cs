@@ -12,7 +12,7 @@ namespace HospitalMS.Repository
         public List<Booking> GetPatientAppointmentList(int id);
 
         public Booking GetAppointment(int DocId, DateOnly dateOnly, TimeOnly timeOnly);
-
+        public void DeletePatientAppointmentList(int Patientid);
         public List<Booking> GetBookingListByPatientId(int id);
         public List<Booking> GetBookingListByDocId(int DocId);
 

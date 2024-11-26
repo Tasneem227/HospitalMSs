@@ -34,6 +34,17 @@ namespace HospitalMS.Repository
         {
             return context.Bookings.Where(b => b.PatientId == id).Include(b => b.Doctor).ToList();
         }
+        public void DeletePatientAppointmentList(int Patientid)
+        {
+            List<Booking> patientappointments = GetPatientAppointmentList(Patientid);
+            if (patientappointments != null)
+            {
+                foreach (var item in patientappointments)
+                {
+                    item.PatientId = null;
+                }
+            }
+        }
 
         public List<Booking> GetBookingListByPatientId(int id)
         {

@@ -57,7 +57,7 @@ namespace HospitalMS.Controllers
             return View("Profile", user);
         }
         //<-------------------------------------------------Add-------------------------------------------------->
-        public async Task<IActionResult> AddMedicalRecordAsync(int DocId)
+        public async Task<IActionResult> AddMedicalRecord(int DocId)
 {
     var username = User.FindFirstValue(ClaimTypes.Name);
     DocId=DoctorRepository.SearchByUserName(username).Id;

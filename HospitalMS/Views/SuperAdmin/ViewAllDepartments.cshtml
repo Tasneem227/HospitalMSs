@@ -13,6 +13,7 @@
         <thead class="table-light">
             <tr>
                 <th>Name</th>
+                <th>Image</th>
                 <th>Description</th>
                 <th>Department Doctors</th>
                 <th>Department Nurses</th>
@@ -23,10 +24,14 @@
         {
             <tr>
                 <td>@item.Name</td>
+
+                <td><div style="width:100px"><img src="~/Images/Department/@item.image" style="width:120px; height:90px" /></div></td>
+    
+
                 <td>@item.Description</td>
-                <td><a asp-action="ViewAllDeptDoctors" asp-controller="SuperAdmin" asp-route-DeptId="@item.Id" class="btn btn-success">Doctors</a></td>
-                <td><a asp-action="ViewAllDeptNurses" asp-controller="SuperAdmin" asp-route-DeptId="@item.Id" class="btn btn-success">Nurses</a></td>
-                <td><a asp-action="EditDepartment" asp-controller="SuperAdmin" asp-route-DeptId="@item.Id" class="btn btn-primary">Edit</a></td>
+                <td><a asp-action="ViewAllDeptDoctors" asp-controller="SuperAdmin" asp-route-DeptId="@item.Id" asp-route-depName="@item.Name" class="btn btn-success">Doctors</a></td>
+                <td><a asp-action="ViewAllDeptNurses" asp-controller="SuperAdmin" asp-route-DeptId="@item.Id" asp-route-depName="@item.Name" class="btn btn-success">Nurses</a></td>
+                <td><a asp-action="EditDepartment" asp-controller="SuperAdmin" asp-route-DeptId="@item.Id" asp-route-depName="@item.Name" class="btn btn-primary">Edit</a></td>
             </tr>
         }
     </table>

@@ -4,5 +4,7 @@
     {
         public int DocId { get; set; }
         public DateTime DateTimeAppointment { get; set; }
+
+        public string DocName { get; set; }
     }
 }

@@ -71,7 +71,7 @@ namespace HospitalMS.ViewModel
         [Range(1000, 2000000000000000000, ErrorMessage = "Salary must be more than 1000 ")]
         public int Salary { get; set; }
 
-    
+        //[Required(ErrorMessage = "You should upload Your Image")]
         [DataType(DataType.Upload)]
         [FileExtensions(Extensions = "jpg,jpeg,png", ErrorMessage = "Image must be a JPG or PNG file.")]
         public string? Imag { get; set; }

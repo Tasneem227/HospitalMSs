@@ -26,18 +26,14 @@
                         @if (User.IsInRole("Patient"))
                         {
                             <div class="d-flex justify-content-center">
-                                <a asp-action="BookAnAppoinment" asp-controller="Patient" asp-route-DocId="@item.Id" class="btn btn-success btn-block">
+                                <a asp-action="BookAnAppoinment" asp-controller="Patient" asp-route-DocId="@item.Id" asp-route-DocName="@item.FName @item.LName" class="btn btn-success btn-block">
                                     <i class="fas fa-calendar-plus"></i> Book Appointment
                                 </a>
                             </div>
                         }
                     </div>
                     <!-- Card Footer with View Profile Button -->
-                    <div class="card-footer text-center">
-                        <a asp-action="DoctorProfile" asp-controller="Doctor" asp-route-id="@item.Id" class="btn btn-outline-info btn-sm">
-                            <i class="fas fa-user"></i> View Profile
-                        </a>
-                    </div>
+                   
                 </div>
             </div>
         }

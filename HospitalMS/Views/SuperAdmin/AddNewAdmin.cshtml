@@ -1,137 +1,120 @@
 ﻿@using HospitalMS.ViewModel
 @model SuperAdminAddAdminViewModel
 @{
-    ViewData["Title"] = "AddNewAdmin";
+    ViewData["Title"] = "Add New Admin";
     SelectList DeptList = new(ViewBag.DeptList, "Id", "Name");
 }
 
-<h1>Add New Admin</h1>
+<div class="container py-5">
+    <h1 class="text-center mb-4">Add New Admin</h1>
+    <hr class="mb-5" />
+    <br />
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <p class="text-muted text-center mb-4">Fill in the data below.</p>
+                    <form class="needs-validation" novalidate asp-action="SaveAdmin" asp-controller="SuperAdmin" method="post" >
+                        <div asp-validation-summary="All" class="text-danger" ></div>
 
-<br />
-<br />
-
-<html >
-<head >
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body >
-
-    <div class="form-body" style="height:-moz-fit-content; scroll-behavior:auto">
-        <div>
-            <div class="form-holder">
-                <div class="form-content">
-                    <div class="form-items">
-                        
-                        <p>Fill in the data below.</p>
-                        <form class="requires-validation" novalidate asp-action="SaveAdmin" asp-controller="SuperAdmin" method="post">
-                            <div asp-validation-summary="All"></div>
-                            <div class="col-md-12">
-                                <label asp-for="FName">First Name</label>
-                                <input class="form-control" type="text" asp-for="@Model.FName" placeholder="First Name" required>
-                                <span asp-validation-for="FName" class="text-danger"></span>
-                                <br />
-                            </div>
-                            <div class="col-md-12">
-                                <label asp-for="LName">Last Name</label>
-                                <input class="form-control" type="text" asp-for="@Model.LName" placeholder="Last Name" required>
-                                <span asp-validation-for="LName" class="text-danger"></span>
-                                <br />
-                            </div>
-
-                            <div class="col-md-12">
-                                <label asp-for="Email">Email</label>
-                                <input class="form-control" type="email" asp-for="@Model.Email" placeholder="E-mail Address" required>
-                                <span asp-validation-for="Email" class="text-danger"></span>
-                                <br />
-                            </div>
-
-                            <div class="col-md-12">
-                                <label asp-for="Phone">Phone</label>
-                                <br /> <br />
-                                <input class="form-control" type="tel" pattern="^\+?[1-9]\d{1,14}$" asp-for="@Model.Phone" placeholder="Phone Number" required>
-                                <span asp-validation-for="Phone" class="text-danger"></span>
-                                <br />
-                            </div>
-
-
-                            <div class="col-md-12">
-                                <label asp-for="Image">Upload Image</label>
-                                <br /> <br />
-                                <input class="form-control" type="file" asp-for="@Model.Image" required>
-                                <span asp-validation-for="Image" class="text-danger"></span>
-                                <br />
-                            </div>
-
-                            <div class="col-md-12">
-                                <label asp-for="BirthDate">Birth Date</label>
-                                <br /> <br />
-                                <input class="form-control" type="date" asp-for="@Model.BirthDate" required>
-                                <span asp-validation-for="BirthDate" class="text-danger"></span>
-                                <br />
-                            </div>
-
-                            <div class="col-md-12">
-                                <label asp-for="Username">Username</label>
-                                <input class="form-control" asp-for="@Model.Username" placeholder="Username" required>
-                                <span asp-validation-for="Username" class="text-danger"></span>
-                                <br />
-                            </div>
-
-                            <div class="col-md-12">
-                                <label asp-for="Password">Password</label>
-                                <input class="form-control" type="password" asp-for="@Model.Password" value="@Model.Password" placeholder="Password" required>
-                                <span asp-validation-for="Password" class="text-danger"></span>
-                                <br />
-                            </div>
-                            <div class="col-md-12">
-                                <label asp-for="ConfirmPassword">Confirm Password</label>
-                                <input class="form-control" type="password" asp-for="@Model.ConfirmPassword" value="@Model.Password" placeholder="Password" required>
-                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                                <br />
-                            </div>
-
-                            <div class="form-group">
-                                <label>Gender</label>
-                                <br />
-                                <div class="form-check">
-                                    <input class="form-check-input" value="Female" type="radio" id="f" checked asp-for="@Model.Gender">
-                                    <label class="form-check-label" for="f">
-                                        Female
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" value="Male" id="m" type="radio" asp-for="@Model.Gender">
-                                    <label class="form-check-label" for="m">
-                                        Male
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label asp-for="DepartmentId">Department</label>
-                                <select class="form-select mt-3" asp-for="DepartmentId" asp-items="DeptList" required>
-                                    <option selected value="0">Select Department</option>
-                                </select>
-                                <span asp-validation-for="DepartmentId" class="text-danger"></span>
-                            </div>
-
-                            <div class="form-button mt-3">
-                                <button id="submit" type="submit" class="btn btn-primary">Add</button>
-                            </div>
-                        </form>
-
-                        <div class="form-button mt-3">
-                            <a asp-action="SuperAdminPage" asp-controller="SuperAdmin" class="btn btn-primary"><button id="submit" type="submit" class="btn btn-primary">Back</button> </a>
+                        <!-- First Name -->
+                        <div class="mb-3">
+                            <label asp-for="FName" class="form-label fw-bold">First Name</label>
+                            <input class="form-control" type="text" asp-for="FName" placeholder="First Name" required />
+                            <span asp-validation-for="FName" class="text-danger"></span>
                         </div>
+
+                        <!-- Last Name -->
+                        <div class="mb-3">
+                            <label asp-for="LName" class="form-label fw-bold">Last Name</label>
+                            <input class="form-control" type="text" asp-for="LName" placeholder="Last Name" required />
+                            <span asp-validation-for="LName" class="text-danger"></span>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label fw-bold">Email</label>
+                            <input class="form-control" type="email" asp-for="Email" placeholder="E-mail Address" required />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="mb-3">
+                            <label asp-for="Phone" class="form-label fw-bold">Phone</label>
+                            <input class="form-control" type="tel" asp-for="Phone" placeholder="Phone Number" required pattern="^\+?[1-9]\d{1,14}$" />
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+
+                        <!-- Upload Image -->
+                        <div class="mb-3">
+                            
+                            <label asp-for="Image" class="form-label fw-bold">Upload Image</label>
+                            <input class="form-control" type="file" asp-for="Image" required />
+                            <span asp-validation-for="Image" class="text-danger"></span>
+                        </div>
+
+                        <!-- Birth Date -->
+                        <div class="mb-3">
+                            <label asp-for="BirthDate" class="form-label fw-bold">Birth Date</label>
+                            <input class="form-control" type="date" asp-for="BirthDate" required />
+                            <span asp-validation-for="BirthDate" class="text-danger"></span>
+                        </div>
+
+                        <!-- Username -->
+                        <div class="mb-3">
+                            <label asp-for="Username" class="form-label fw-bold">Username</label>
+                            <input class="form-control" type="text" asp-for="Username" placeholder="Username" required />
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label fw-bold">Password</label>
+                            <input class="form-control" type="password" value="@Model.Password" asp-for="Password" placeholder="Password" required />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="mb-3">
+                            <label asp-for="ConfirmPassword" class="form-label fw-bold">Confirm Password</label>
+                            <input class="form-control" type="password" value="@Model.Password" asp-for="ConfirmPassword" placeholder="Confirm Password" required />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+
+                        <!-- Gender -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Gender</label>
+                            <div class="form-check">
+                                <input class="form-check-input" value="Female" type="radio" id="female" asp-for="Gender" />
+                                <label class="form-check-label" for="female">Female</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" value="Male" type="radio" id="male" asp-for="Gender" />
+                                <label class="form-check-label" for="male">Male</label>
+                            </div>
+                        </div>
+
+                        <!-- Department -->
+                        <div class="mb-3">
+                            <label asp-for="DepartmentId" class="form-label fw-bold">Department</label>
+                            <select class="form-select" asp-for="DepartmentId" asp-items="DeptList" required>
+                                <option selected value="">Select Department</option>
+                            </select>
+                            <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">Add Admin</button>
+                        </div>
+                    </form>
+
+                    <div class="mt-3 text-center">
+                        <a asp-action="SuperAdminPage" asp-controller="SuperAdmin" class="btn btn-link">Back to Dashboard</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    @section Scripts {
-        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-    }
-</body>
-</html>

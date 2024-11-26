@@ -33,6 +33,8 @@ namespace HospitalMS.AutoMapper
             CreateMap<AdminNurseDoctorViewModel,Doctor>();
             CreateMap<AdminNurseDoctorViewModel, Nurse>();
             CreateMap<Nurse, AdminNurseDoctorViewModel>();
+            CreateMap<Patient, PatientViewModel>();
+            CreateMap<PatientViewModel,Patient>();
             CreateMap<ApplicationUser, Patient>()
                 .ForMember(dest => dest.Password, src => src.MapFrom(x => x.PasswordHash))
                 .ForMember(dest => dest.Phone, src => src.MapFrom(x => x.PhoneNumber))

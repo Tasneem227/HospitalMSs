@@ -59,7 +59,7 @@ namespace HospitalMS.ViewModel
         [RegularExpression("^(male|female|Male|Female)$", ErrorMessage = "Gender must be either male or female.")]
         [Display(Name = "Gender")]
         public string Gender { get; set; }
-
+        [Required (ErrorMessage ="Image is required")]
         [DataType(DataType.Upload)]
         [FileExtensions(Extensions = "jpg,jpeg,png", ErrorMessage = "Image must be a JPG or PNG file.")]
         public string? Image { get; set; }
@@ -68,7 +68,7 @@ namespace HospitalMS.ViewModel
         [Required(ErrorMessage = "Birth date is required.")]
         [DataType(DataType.Date, ErrorMessage = "Invalid date format.")]
         [Display(Name = "Birth Date")]
-        public DateOnly BirthDate { get; set; }
+        public DateOnly BirthDate { get; set; } = new DateOnly(1999, 10, 10);
 
     }
 

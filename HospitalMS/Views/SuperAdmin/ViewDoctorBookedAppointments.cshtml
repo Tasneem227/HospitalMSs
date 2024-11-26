@@ -4,7 +4,7 @@
     ViewData["Title"] = "ViewDoctorBookedAppointments";
 }
 
-<h1>View Doctor Booked Appointments</h1>
+<h2>Dr @ViewBag.doctorname  Appointments</h2>
 
 <br />
 <br />
@@ -19,23 +19,19 @@
         <table class="table table-responsive table-hover">
             <thead class="table-light">
                 <tr>
-                    <th>Doctor Name</th>
+                    <th>Patient image</th>
+                    <th>Patient Name</th>
                     <th>Date</th>
                     <th>Time</th>
-                    <th>Patient Id</th>
-                    <th>Patient Name</th>
-                    <th>Department </th>
                 </tr>
             </thead>
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@item.Doctor.FName @item.Doctor.LName</td>
+                    <td><img src="~/Images/Doctors/@item.Patient.Imag" style="width:100px; height:100px" /></td>
+                    <td>@item.Patient.FName @item.Patient.LName</td>
                     <td>@item.Date</td>
                     <td>@item.Time</td>
-                    <td>@item.Patient.Id</td>
-                    <td>@item.Patient.FName @item.Patient.LName</td>
-                    <td>@item.Department.Name</td>
                     <td></td>
                 </tr>
             }

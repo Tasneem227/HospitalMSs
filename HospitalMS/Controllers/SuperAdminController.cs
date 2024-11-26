@@ -17,6 +17,7 @@ namespace HospitalMS.Controllers
          readonly IDepartmentRepository departmentRepository;
         private readonly IDoctorRepository doctorRepository;
         private readonly IBookingRepository bookingRepository;
+        private readonly IPatientRepository patientRepository;
         private readonly INurseRepository nurseRepository;
         private readonly IMapper mapper;
         private readonly UserManager<ApplicationUser> userManager;
@@ -25,6 +26,7 @@ namespace HospitalMS.Controllers
         public SuperAdminController
             (IAdminRepository _adminRepository, IDepartmentRepository _departmentRepository,
             IDoctorRepository _doctorRepository, IBookingRepository _bookingRepository,
+            IPatientRepository patientRepository,
             INurseRepository _nurseRepository,IMapper mapper ,UserManager<ApplicationUser> userManager
             ,ISuperAdminRepository superAdminRepository)
         {
@@ -32,6 +34,7 @@ namespace HospitalMS.Controllers
             departmentRepository = _departmentRepository;
             doctorRepository = _doctorRepository;
             bookingRepository = _bookingRepository;
+            this.patientRepository = patientRepository;
             nurseRepository = _nurseRepository;
             this.mapper = mapper;
             this.userManager = userManager;
@@ -44,7 +47,12 @@ namespace HospitalMS.Controllers
         {
             return View("SuperAdminPage");
         }
-
+        public async Task<IActionResult> SuperAdminProfile()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = await userManager.FindByIdAsync(userId);
+            return View("Profile", user);
+        }
 
         //view all admins with their departments ------------------------------
         public IActionResult ViewAllAdmins()
@@ -169,7 +177,7 @@ namespace HospitalMS.Controllers
 
         }
 
-        //EditAdmin --
+        //EditAdmin -----------------------------------------------------------------------------------------------
         public async Task<IActionResult> EditAdmin(int AdminId)
         {
             ViewData["DeptList"] = departmentRepository.GetAll();
@@ -199,7 +207,7 @@ namespace HospitalMS.Controllers
                     var username = User.FindFirstValue(ClaimTypes.Name);
                     int SuperAdminId = superAdminRepository.GetByUserName(username);
                     Admin admin = new Admin();
-                    admin.Id = ViewModel.Id;
+                    admin.Id = (int)ViewModel.Id;
                     admin.DepartmentId = ViewModel.DepartmentId;
                     admin.FName = ViewModel.FName;
                     admin.LName = ViewModel.LName;
@@ -276,11 +284,9 @@ namespace HospitalMS.Controllers
             return View("AddNewDepartment");
         }
 
-        public IActionResult SaveNewDepartment(string Name, string Description)
+        public IActionResult SaveNewDepartment(Department department)
         {
-            Department department = new Department();
-            department.Name = Name;
-            department.Description = Description;
+          
             if (ModelState.IsValid)
             {
                 departmentRepository.Add(department);
@@ -299,15 +305,19 @@ namespace HospitalMS.Controllers
 
 
         //EditDepartment--------------------------------------------------------------------------------------------------------------
-        public IActionResult EditDepartment(int DeptId)
+        public IActionResult EditDepartment(int DeptId, string depName)
         {
-            return View("EditDepartment", departmentRepository.GetById(DeptId));
+            Department department = departmentRepository.GetById(DeptId);
+            ViewBag.currentImage = department.image;
+            ViewBag.depName = depName;
+            return View("EditDepartment",department);
         }
 
-        public IActionResult SaveDepartmentEdit(Department department)
+        public IActionResult SaveDepartmentEdit(Department department,string currentimage)
         {
             if (ModelState.IsValid)
             {
+                if (department.image == null) { department.image = currentimage; }
                 departmentRepository.Update(department);
                 departmentRepository.Save();
                 return RedirectToAction("ViewAllDepartments");
@@ -316,41 +326,131 @@ namespace HospitalMS.Controllers
         }
 
 
+        ///////////////////////////////////////Edit Patient ///////////////////////////////////////////
+        public async Task<IActionResult> EditPatient(int PatientId)
+        {
+            ViewData["DeptList"] = departmentRepository.GetAll();
+            Patient patient = patientRepository.GetById(PatientId);
+            PatientViewModel ViewModel = new();
+            ViewModel.Id = PatientId;
+            ViewModel.FName = patient.FName;
+            ViewModel.LName = patient.LName;
+            ViewModel.Username = patient.Username;
+            ViewModel.Password = patient.Password;
+            ViewModel.BirthDate = patient.BirthDate;
+            ViewModel.Email = patient.Email;
+            ViewModel.Phone = patient.Phone;
+            ViewModel.Imag = patient.Imag;
+            ViewModel.Gender = patient.Gender;
+            ViewModel.CurrentImage = patient.Imag;
+            ViewModel.userid = (await userManager.FindByNameAsync(patient.Username)).Id;
+            return View("Editpatient", ViewModel);
+        }
+        [HttpPost]
+        public async Task<IActionResult> SavePatientEdit(PatientViewModel ViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                
+                    var username = User.FindFirstValue(ClaimTypes.Name);
+                    int SuperAdminId = superAdminRepository.GetByUserName(username);
+                    Patient patient = new Patient();
+                    patient.Id = ViewModel.Id;
+                    patient.FName = ViewModel.FName;
+                    patient.LName = ViewModel.LName;
+                    patient.Username = ViewModel.Username;
+                    patient.Password = ViewModel.Password;
+                    patient.BirthDate = ViewModel.BirthDate;
+                    patient.Email = ViewModel.Email;
+                    patient.Phone = ViewModel.Phone;
+                    patient.Imag = ViewModel.Imag ?? ViewModel.CurrentImage;
+                    patient.Gender = ViewModel.Gender;
+                    var user = await userManager.FindByIdAsync(ViewModel.userid);
+                    if (user != null)
+                    {
+                        user.Id = ViewModel.userid;
+                        user.FName = ViewModel.FName;
+                        user.LName = ViewModel.LName;
+                        user.Image = patient.Imag;
+                        user.BirthDate = ViewModel.BirthDate;
+                        user.Email = ViewModel.Email;
+                        user.PhoneNumber = ViewModel.Phone;
+                        user.UserName = ViewModel.Username;
+                        await userManager.RemovePasswordAsync(user);
+                        var passwordResult = await userManager.AddPasswordAsync(user, ViewModel.Password);
+                        user.Gender = ViewModel.Gender;
+                        IdentityResult result = await userManager.UpdateAsync(user);
+
+                        if (result.Succeeded)
+                        {
+                            patientRepository.Update(patient);
+                            patientRepository.Save();
+                            return RedirectToAction("AllPatients","Admin");
+                        }
+                        foreach (var error in result.Errors)
+                        {
+                            ModelState.AddModelError("", error.Description);
+                        }
+                    }
+            }
+            return View("EditPatient", ViewModel);
+
+        }
+        //-----------------------------Delete Patient -------------------------------------------------------------
+        public async Task<IActionResult> DeletePatient(int id)
+        {
+            var patient = patientRepository.GetById(id);
+            if (id != 0)
+            {
+                var user = await userManager.FindByNameAsync(patient.Username);
+                if (user != null)
+                {
+                    var roles = await userManager.GetRolesAsync(user);
+                    if (roles.Count > 0)
+                    {
+                        bookingRepository.DeletePatientAppointmentList(id);
+                        patientRepository.RemoveById(id);
+                        patientRepository.Save();
+                        var removeRolesResult = await userManager.RemoveFromRolesAsync(user, roles);
+                        await userManager.DeleteAsync(user);
+                        return RedirectToAction("AllPatients","Admin");
+                    }
+                }
+            }
+            return RedirectToAction("AllPatients", "Patient");
+         }
+
         //view all doctors with their department------------------------------------------------------------------------------------------
-        public ActionResult ViewAllDeptDoctors(int DeptId)
+        public ActionResult ViewAllDeptDoctors(int DeptId,string depName)
         {
             if (DeptId == 0)
             {
                 return View("ViewAllDeptDoctors", doctorRepository.GetAll());
             }
+            ViewBag.depId = DeptId;
+            ViewBag.depName = depName;
             return View("ViewAllDeptDoctors", doctorRepository.GetListByDeptId(DeptId));
         }
 
         //view all nurses with their department-------------------------------------------------------------------------------------------
-        public ActionResult ViewAllDeptNurses(int DeptId)
+        public ActionResult ViewAllDeptNurses(int DeptId, string depName)
         {
             if (DeptId == 0)
             {
                 return View("ViewAllDeptNurses", nurseRepository.GetAll());
             }
+            ViewBag.depId = DeptId;
+            ViewBag.depName = depName;
             return View("ViewAllDeptNurses", nurseRepository.GetByDeptId(DeptId));
         }
 
         //view all recorded appointments--
-        public ActionResult ViewDoctorBookedAppointments(int DocId)
+        public ActionResult ViewDoctorBookedAppointments(int DoctId, string docname)
         {
-            return View("ViewDoctorBookedAppointments", bookingRepository.GetDocBookingListWithPatients(DocId));
+            ViewBag.doctorname = docname;
+            return View("ViewDoctorBookedAppointments", bookingRepository.GetDocBookingListWithPatients(DoctId));
         }
-        
-
-       
-
-        public ActionResult CheckUserName(string Username, int Id)
-        {
-            if (adminRepository.GetByUserNameAndId(Username, Id) == null)
-                return Json(true);
-            return Json(false);
-        }
+     
         public ActionResult CustomBirthDateValidation(DateOnly BirthDate)
         {
             if (BirthDate.Year < 2005 && BirthDate.Year > 1960)
