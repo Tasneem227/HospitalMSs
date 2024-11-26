@@ -21,14 +21,16 @@
                         <h3>Edit Doctor </h3>
                         <p>Select Doctor you want to Edit</p>
                         <table class="table table-bordered table-hover" style=" Background:azure">
-                            <td>Id</td>
-                            <td>Full Name</td>
-                            <td>Username</td>
-                            <td>Edit </td>
+                            <th>Id</th>
+                            <th>Image</th>
+                            <th>Full Name</th>
+                            <th>Username</th>
+                            <th>Edit </th>
                             @foreach (var doctor in Model)
                             {
                                 <tr>
                                     <td>@doctor.Id</td>
+                                    <td> <img src="~/Images/Doctors/@doctor.Imag" width="90px" height="80px"></td>
                                     <td>@doctor.FName @doctor.LName</td>
                                     <td>@doctor.Username</td>
                                     <td>

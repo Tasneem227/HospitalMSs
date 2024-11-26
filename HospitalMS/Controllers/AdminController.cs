@@ -42,6 +42,9 @@ namespace HospitalMS.Controllers
         }
         public IActionResult AdminPage()
         {
+            var username = User.FindFirstValue(ClaimTypes.Name);
+            Admin admin=AdminRepository.GetByUserName(username);
+            ViewBag.depname = AdminRepository.getAdminDepartment(admin.DepartmentId).Name;
             return View("Index");
         }
         public async Task<IActionResult> AdminProfile()
@@ -52,7 +55,7 @@ namespace HospitalMS.Controllers
         }
 
 
-        //<-------------------------------------------Doctor--------------------------------------------------------->
+        //<-------------------------------------------Doctor------------------------------------------------------`6v \d\\\\--->
         //add Doctor
         public IActionResult AddDoctor()
         {
@@ -413,6 +416,7 @@ namespace HospitalMS.Controllers
             List<Patient> patients = patientRepository.GetAll();
             return View("AllPatients", patients);
         }
+       
 
     }
    

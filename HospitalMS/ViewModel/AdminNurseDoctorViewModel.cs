@@ -33,7 +33,7 @@ namespace HospitalMS.ViewModel
         [DataType(DataType.Date, ErrorMessage = "Invalid date format.")]
         [Remote (action:"CustomBirthDateValidation" ,controller:"Admin" ,ErrorMessage ="Age must be at least 20 years old")]
         [Display(Name = "Birth Date")]
-        public DateOnly BirthDate { get; set; }
+        public DateOnly BirthDate { get; set; } = new DateOnly(1999, 10, 10);
 
         [Required(ErrorMessage = "Email is required.")]
         [EmailAddress(ErrorMessage = "Invalid email address format.")]

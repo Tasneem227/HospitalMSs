@@ -27,7 +27,9 @@ namespace HospitalMS.Repository
         {
             return context.Admins.Include(d => d.Department).FirstOrDefault(i=>i.Id == id);
         }
-
+        public Department getAdminDepartment(int id) {
+            return context.Departments.FirstOrDefault(i => i.Id == id);
+        }
         public Admin GetByUserName(string Username)
         {
             return context.Admins.FirstOrDefault(i=>i.Username == Username);

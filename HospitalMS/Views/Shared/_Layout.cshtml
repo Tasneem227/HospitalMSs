@@ -113,15 +113,17 @@
                                     <li class="nav__item">
                                         <a class="nav__item-link" asp-area="" asp-controller="Admin" asp-action="AdminProfile">Profile</a>
                                     </li>
+                                    <!-- /.nav-item -->
+                                    <li class="nav__item">
+                                        <a class="nav__item-link" asp-area="" asp-controller="Admin" asp-action="AdminPage">Dashboard</a>
+                                    </li>
+
+                                    <!-- /.nav-item -->
                                     
                                     <li class="nav__item">
                                         <a class="nav__item-link" asp-area="" asp-controller="Admin" asp-action="AllPatients">Hospital Patients</a>
                                     </li>
-
-                                    <!-- /.nav-item -->
-                                <li class="nav__item">
-                                    <a class="nav__item-link" asp-area="" asp-controller="Admin" asp-action="AdminPage">Dashboard</a>
-                                </li><!-- /.nav-item -->
+                                   
                                    
                                }
                                 @if (User.IsInRole("Super Admin"))

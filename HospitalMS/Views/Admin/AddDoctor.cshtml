@@ -90,16 +90,20 @@
                                 <label>Gender</label>
                                 <br />
                                 <div class="form-check">
-                                    <input class="form-check-input" value="Female"  type="radio" id="f" checked asp-for="@Model.Gender">
+                                    <input class="form-check-input" value="Female"  type="radio" id="f"  asp-for="@Model.Gender">
+
                                     <label class="form-check-label" for="f">
                                         Female
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" value="Male" id="m" type="radio" asp-for="@Model.Gender">
+
                                     <label class="form-check-label" for="m">
                                         Male
                                     </label>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+
                                 </div>
                             </div>
 
