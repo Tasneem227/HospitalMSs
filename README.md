@@ -136,4 +136,6 @@ How to Run the Project
    login:-
    - as super admin-> username:gamel  password:Gamel!
    - as Doctor-> username:ayman_  password:Ayman! 
-   - 
+   - as Patient -> username:Maya  password:Maya!!
+   - as Nurse -> username:Reem  password:Reemgf!
+   - as Admin -> username:omar  password:Omar!!
