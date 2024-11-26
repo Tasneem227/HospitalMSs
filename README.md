@@ -128,8 +128,10 @@ database and then present it on the user interface.
 
 How to Run the Project
 1. Clone the repository.
-2. Set up the database using MSSQL.
+2. Set up the database using MSSQL. backup database:- https://drive.google.com/file/d/1U9Utdc1ZIYc3dCizxMHqKt8V7yU5j5iS/view?usp=drive_link
 3. Update the appsettings.json with your database connection string.
 4. Run dotnet ef database update to apply migrations.
 5. Build and run the application using Visual Studio or dotnet CLI.
 6. Access the web application through your local server (e.g.,
+   login:-
+   - as super admin-> username:gamel  password:Gamel! 
