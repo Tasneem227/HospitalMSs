@@ -128,7 +128,7 @@ database and then present it on the user interface.
 
 How to Run the Project
 1. Clone the repository.
-2. Set up the database using MSSQL. backup database:- https://drive.google.com/file/d/1U9Utdc1ZIYc3dCizxMHqKt8V7yU5j5iS/view?usp=drive_link
+2. Set up the database using MSSQL. backup database:- [https://drive.google.com/file/d/1U9Utdc1ZIYc3dCizxMHqKt8V7yU5j5iS/view?usp=drive_link](https://drive.google.com/file/d/1D1m8o0wuRf5k9O7luCSj8-JbeKjRLg3A/view?usp=sharing)
 3. Update the appsettings.json with your database connection string.
 4. Run dotnet ef database update to apply migrations.
 5. Build and run the application using Visual Studio or dotnet CLI.
