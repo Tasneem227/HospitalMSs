@@ -3,14 +3,14 @@ The Hospital Management System is a web-based application developed using .NET C
 8 MVC. This project aims to streamline the management processes within hospitals,
 providing a centralized, fast, and secure platform that integrates all hospital data and
 minimizes vulnerabilities against hacking attempts.
-Project Objective
+Project Objective:- 
 Our primary goal is to enhance the efficiency of hospital management through a secure and
 robust system that facilitates data handling, patient management, and administrative
 operations. The system aims to ensure data accuracy and integrity while providing a
 user-friendly interface for healthcare professionals.
 Technologies Used
 ● Backend: .NET Core 8 MVC, Entity Framework, Repository Pattern, MSSQL
-● Front-End: HTML5, CSS3, JavaScript, Bootstrap
+● Front-End: HTML5, CSS3, Bootstrap
 ● Design Patterns: Repository Pattern
 ● Database: MSSQL with Entity Framework for data management
 ● Operations: CRUD (Create, Read, Update, Delete)
@@ -32,9 +32,8 @@ The project is organized into the following structure:
 The Models folder contains definitions of the entities used within the application, where each
 entity represents a specific table in the database. Here are some of the entities in the
 project:
-● Admin.cs: Represents the data of the system administrator. It includes fields related
-to admin information such as name, email, and credentials that can be used for
-authentication processes.
+● Admin.cs: Represents the data of the system administrator. controls a specific department's
+doctors and nurses and all patients( add delete edit and show )
 ● Booking.cs: Manages patient bookings within the system, such as scheduling
 appointments between patients and doctors and recording visit details.
 ● Department.cs: Contains information about the medical departments in the hospital
@@ -46,14 +45,14 @@ facilitate operations such as assigning specific nurses to groups of doctors.
 ● MedicalRecord.cs: Represents patients' medical records, including details about
 diagnoses, treatments, and medical history.
 ● Nurse.cs: Contains data about nurses working in the hospital, including name and
-specialties.
+specialties , and shows the appointments related to doctors she works with
 ● Patient.cs: Represents patient data such as name, age, gender, and relationships
 with MedicalRecord and Booking.
 ● SuperAdmin.cs: Likely refers to a user with higher privileges in the system, such as
-overall control of hospital settings.
+overall control of hospital settings adds admins to diffrent departments
 ● Identity Folder: Contains entities related to user and identity management to
 facilitate authentication processes in the system.
-2. Controllers:
+3. Controllers:
 The Controllers folder contains classes that handle the logic of HTTP requests and send
 data to the Views. Each class has a specific function, acting as a bridge between the user
 interface and the database.
@@ -70,7 +69,7 @@ patients, managing their information, and booking appointments.
 ● SuperAdminController.cs: Likely responsible for operations that require advanced
 privileges in the system, such as managing primary users or overseeing all
 departments.
-3. Views:
+4. Views:
 The Views folder contains the user interface (UI) elements for the application. Each View
 corresponds to the visual representation of data for a particular Model and is managed by its
 respective Controller. Here is a breakdown of the contents:
@@ -129,10 +128,10 @@ database and then present it on the user interface.
 How to Run the Project
 1. Clone the repository.
 2. Set up the database using MSSQL. backup database:- [https://drive.google.com/file/d/1U9Utdc1ZIYc3dCizxMHqKt8V7yU5j5iS/view?usp=drive_link](https://drive.google.com/file/d/1D1m8o0wuRf5k9O7luCSj8-JbeKjRLg3A/view?usp=sharing)
-3. Update the appsettings.json with your database connection string.
-4. Run dotnet ef database update to apply migrations.
-5. Build and run the application using Visual Studio or dotnet CLI.
-6. Access the web application through your local server (e.g.,
+4. Update the appsettings.json with your database connection string.
+5. Run dotnet ef database update to apply migrations.
+6. Build and run the application using Visual Studio or dotnet CLI.
+7. Access the web application through your local server (e.g.,
    login:-
    - as super admin-> username:gamel  password:Gamel!
    - as Doctor-> username:ayman_  password:Ayman! 
